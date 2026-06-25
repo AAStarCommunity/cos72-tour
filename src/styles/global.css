@@ -31,10 +31,10 @@ img { max-width: 100%; height: auto; display: block; }
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 1.1rem; }
 
 /* lang toggle: default shows zh */
-.en { display: none; }
-body.lang-en .zh { display: none; }
-body.lang-en .en { display: block; }
-body.lang-en span.en { display: inline; }
+/* bilingual: default English; body.lang-zh switches to Chinese */
+.zh { display: none; }
+body.lang-zh .en { display: none; }
+body.lang-zh .zh { display: inline; }
 
 /* ---------- header ---------- */
 .site-head {

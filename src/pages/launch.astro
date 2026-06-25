@@ -5,63 +5,78 @@ const title = "Cold Launch — AAStar / Mycelium";
 const desc =
   "What we're building and why we need you: digital public goods (Cos72, Sin90, AAStar Infra), buy GToken/aPNTs with zero gas, and a transparent 4-stage Cold Launch. Details at launch.mushroom.cv.";
 
-// 数据来自 launch.mushroom.cv（Cold Launch 页）：GToken $0.15/USDC、四阶段独立筹集、合计 $135,800、四种支持方式。
+// 数据来自 launch.mushroom.cv（Cold Launch 页）。
 const blocks = [
   {
     img: "/panels/launch-build.png",
-    title: "What we build: digital public goods",
-    narration:
-      "Cos72 (community OS), Sin90 (personal OS) and AAStar Infra (AirAccount · SuperPaymaster · CometENS) — open, free and permissionless. Anyone can use, fork or self-deploy.",
-    tech: "All code is open-source on GitHub; the hosted version is free for communities, with running costs covered by grants.",
-    value: "Public infrastructure for individuals → communities → cities, owned by no platform.",
+    titleEn: "What we build: digital public goods",
+    titleZh: "我们建什么：数字公共物品",
+    narrationEn: "Cos72 (community OS), Sin90 (personal OS) and AAStar Infra (AirAccount · SuperPaymaster · CometENS) — open, free and permissionless. Anyone can use, fork or self-deploy.",
+    narrationZh: "Cos72（社区 OS）、Sin90（个人 OS）和 AAStar 基础设施（AirAccount · SuperPaymaster · CometENS）—— 开源、免费、无许可。任何人都能使用、fork 或自部署。",
+    techEn: "All code is open-source on GitHub; the hosted version is free for communities, with running costs covered by grants.",
+    techZh: "所有代码在 GitHub 开源；托管版对社区免费，运营成本由 Grant 覆盖。",
+    valueEn: "Public infrastructure for individuals → communities → cities, owned by no platform.",
+    valueZh: "面向个体 → 社区 → 城市的公共基础设施，不被任何平台占有。",
   },
   {
     img: "/panels/launch-serve.png",
-    title: "Who we serve: individual → community → city",
-    narration:
-      "Individuals get digital sovereignty (data, identity, assets). Communities get non-profit collaboration tooling. Cities get an OS that connects communities and residents. Each layer builds on the one below.",
-    tech: "The same primitives (AirAccount, points, reputation SBTs, gasless tx) scale from one person to a whole community to a city.",
-    value: "A three-layer path — start as a person, grow into a community, reach a city.",
+    titleEn: "Who we serve: individual → community → city",
+    titleZh: "服务对象：个体 → 社区 → 城市",
+    narrationEn: "Individuals get digital sovereignty (data, identity, assets). Communities get non-profit collaboration tooling. Cities get an OS that connects communities and residents. Each layer builds on the one below.",
+    narrationZh: "个体获得数字主权（数据、身份、资产）；社区获得非营利协作工具；城市获得连接社区与居民的操作系统。每一层都建立在下一层之上。",
+    techEn: "The same primitives (AirAccount, points, reputation SBTs, gasless tx) scale from one person to a whole community to a city.",
+    techZh: "同一套原语（AirAccount、积分、声誉 SBT、gasless 交易）从一个人扩展到整个社区、再到城市。",
+    valueEn: "A three-layer path — start as a person, grow into a community, reach a city.",
+    valueZh: "三层路径 —— 从个人起步，长成社区，抵达城市。",
   },
   {
     img: "/panels/launch-buy.png",
-    title: "Buy GToken / aPNTs points with zero gas",
-    narration:
-      "Support the Cold Launch by buying GToken with USDC — $0.15 / GToken. This is the EOA purchase convenience provided by Launch: pay USDC from an EOA, a relayer covers the gas, so you need no ETH.",
-    tech: "USDC via EIP-3009 authorization; a DVT relay + Paymaster sponsors the gas. aPNTs community points buy the same gasless way.",
-    value: "GToken = governance + voting + real community membership. Your ideas leave a trace in governance.",
+    titleEn: "Buy GToken / aPNTs points with zero gas",
+    titleZh: "零 Gas 买 GToken / aPNTs 积分",
+    narrationEn: "Support the Cold Launch by buying GToken with USDC — $0.15 / GToken. This is the EOA purchase convenience provided by Launch: pay USDC from an EOA, a relayer covers the gas, so you need no ETH.",
+    narrationZh: "用 USDC 买 GToken 支持冷启动 —— $0.15 / GToken。这是 Launch 提供的 EOA 购买便利：用 EOA 付 USDC，relayer 代付 gas，你无需 ETH。",
+    techEn: "USDC via EIP-3009 authorization; a DVT relay + Paymaster sponsors the gas. aPNTs community points buy the same gasless way.",
+    techZh: "USDC 走 EIP-3009 授权；DVT relay + Paymaster 代付 gas。社区积分 aPNTs 同样可零 gas 购买。",
+    valueEn: "GToken = governance + voting + real community membership. Your ideas leave a trace in governance.",
+    valueZh: "GToken = 治理 + 投票 + 真正的社区成员资格。你的想法能在治理中留下痕迹。",
   },
   {
     img: "/panels/launch-phases.png",
-    title: "A transparent, staged Cold Launch",
-    narration:
-      "Four stages, funded independently — each is its own goal and none overrides another. Phase 1 $1,200 (keep building), Phase 2 $8,000 (research), Phase 3 $36,600 (community + DAO), Phase 4 $86,400 (core infra, 18 months). Total $135,800.",
-    tech: "Funds enter a public pool; every use is shown live on the dashboard and milestones. Treasury via Gnosis Safe multisig.",
-    value: "Not a pitch deck — a transparent checklist of what we've done, what's next, and where the money goes.",
+    titleEn: "A transparent, staged Cold Launch",
+    titleZh: "透明的分阶段冷启动",
+    narrationEn: "Four stages, funded independently — each is its own goal and none overrides another. Phase 1 $1,200 (keep building), Phase 2 $8,000 (research), Phase 3 $36,600 (community + DAO), Phase 4 $86,400 (core infra, 18 months). Total $135,800.",
+    narrationZh: "四个阶段，各自独立筹集 —— 每个都是独立目标，互不覆盖。阶段 1 $1,200（持续建设），阶段 2 $8,000（科研），阶段 3 $36,600（社区 + DAO），阶段 4 $86,400（核心基建，18 个月）。合计 $135,800。",
+    techEn: "Funds enter a public pool; every use is shown live on the dashboard and milestones. Treasury via Gnosis Safe multisig.",
+    techZh: "资金进入公共资金池；每笔用途在看板和里程碑实时可查。国库由 Gnosis Safe 多签管理。",
+    valueEn: "Not a pitch deck — a transparent checklist of what we've done, what's next, and where the money goes.",
+    valueZh: "不是路演 PPT —— 而是一份透明清单：做过什么、要做什么、钱花在哪。",
   },
   {
     img: "/panels/launch-use.png",
-    title: "Two ways to use it",
-    narration:
-      "Use the free hosted version — register and go, costs covered by grants. Or clone the open-source code and self-deploy: fork it, customize it, run it yourself, no permission needed.",
-    tech: "All code is open-source on GitHub (AAStarCommunity); the hosted service is the same code, run for you.",
-    value: "Zero lock-in: convenience if you want it, full sovereignty if you need it.",
+    titleEn: "Two ways to use it",
+    titleZh: "两种使用方式",
+    narrationEn: "Use the free hosted version — register and go, costs covered by grants. Or clone the open-source code and self-deploy: fork it, customize it, run it yourself, no permission needed.",
+    narrationZh: "用免费托管版 —— 注册即用，成本由 Grant 覆盖；或克隆开源代码自部署 —— fork、定制、自己运行，无需许可。",
+    techEn: "All code is open-source on GitHub (AAStarCommunity); the hosted service is the same code, run for you.",
+    techZh: "所有代码在 GitHub 开源（AAStarCommunity）；托管服务就是同一份代码，由我们替你运行。",
+    valueEn: "Zero lock-in: convenience if you want it, full sovereignty if you need it.",
+    valueZh: "零锁定：要便利有便利，要主权有主权。",
   },
 ];
 
 const built = [
-  "AirAccount — fingerprint login, no ETH, KMS/TEE key management",
-  "SuperPaymaster — gasless transactions & micro-payments",
-  "AirAccount Core Contract — 446/446 tests passing",
-  "YetAnotherAA — Passkey + account flow + AAStar integration",
-  "Cos72 + Sin90 — community OS + personal OS (Beta)",
+  { en: "AirAccount — fingerprint login, no ETH, KMS/TEE key management", zh: "AirAccount —— 指纹登录、无需 ETH、KMS/TEE 私钥管理" },
+  { en: "SuperPaymaster — gasless transactions & micro-payments", zh: "SuperPaymaster —— gasless 交易与微支付" },
+  { en: "AirAccount Core Contract — 446/446 tests passing", zh: "AirAccount 核心合约 —— 446/446 测试通过" },
+  { en: "YetAnotherAA — Passkey + account flow + AAStar integration", zh: "YetAnotherAA —— Passkey + 账户流程 + AAStar 集成" },
+  { en: "Cos72 + Sin90 — community OS + personal OS (Beta)", zh: "Cos72 + Sin90 —— 社区 OS + 个人 OS（Beta）" },
 ];
 
 const support = [
-  { n: "Grant", min: "$500+", desc: "Unconditional sponsorship — back the vision, funds go to the public pool." },
-  { n: "Co-build", min: "$1,000+", desc: "Fund a module you care about; we define deliverables together." },
-  { n: "Consulting", min: "$500+", desc: "Open-source is free to self-host; paid help with deploy & customization (via the commercial entity)." },
-  { n: "Governance Token", min: "$0.15 / GToken", desc: "Buy GToken with USDC for governance rights and community membership." },
+  { n: "Grant", min: "$500+", en: "Unconditional sponsorship — back the vision, funds go to the public pool.", zh: "无条件赞助 —— 认可愿景，资金进入公共资金池。" },
+  { n: "Co-build", min: "$1,000+", en: "Fund a module you care about; we define deliverables together.", zh: "共建你关心的模块；交付目标共同定义。" },
+  { n: "Consulting", min: "$500+", en: "Open-source is free to self-host; paid help with deploy & customization.", zh: "开源可自部署免费；部署与定制提供付费顾问支持。" },
+  { n: "Governance Token", min: "$0.15 / GToken", en: "Buy GToken with USDC for governance rights and community membership.", zh: "用 USDC 买 GToken，获得治理权与社区成员资格。" },
 ];
 ---
 
@@ -76,18 +91,20 @@ const support = [
   <body>
     <header class="site-head">
       <div class="wrap">
-        <div class="brand">Cos72 <small>Cold Launch</small></div>
-        <a class="lang-btn" href="/">← Role Tour</a>
+        <div class="brand">Cos72 <small><span class="en">Cold Launch</span><span class="zh">冷启动</span></small></div>
+        <div style="display:flex;gap:.5rem;align-items:center;">
+          <a class="lang-btn" href="/"><span class="en">← Role Tour</span><span class="zh">← 角色漫游</span></a>
+          <button class="lang-btn" id="langBtn" type="button">中文</button>
+        </div>
       </div>
     </header>
 
     <section class="hero">
       <div class="wrap">
-        <h1>What we're building, and why we need you</h1>
+        <h1><span class="en">What we're building, and why we need you</span><span class="zh">我们在建设什么，以及为什么需要你</span></h1>
         <p>
-          AAStar / Mycelium builds open digital public goods. This is the Cold Launch — a transparent
-          look at what exists, what's next, and how you can support it. For the full story, visit
-          <a href="https://launch.mushroom.cv" target="_blank" rel="noopener">launch.mushroom.cv</a>.
+          <span class="en">AAStar / Mycelium builds open digital public goods. This is the Cold Launch — a transparent look at what exists, what's next, and how you can support it. For the full story, visit <a href="https://launch.mushroom.cv" target="_blank" rel="noopener">launch.mushroom.cv</a>.</span>
+          <span class="zh">AAStar / Mycelium 建设开放的数字公共物品。这是冷启动 —— 透明地展示已有什么、下一步做什么、你如何支持。完整故事见 <a href="https://launch.mushroom.cv" target="_blank" rel="noopener">launch.mushroom.cv</a>。</span>
         </p>
       </div>
     </section>
@@ -98,44 +115,53 @@ const support = [
           <article class="step">
             <div class="panel">
               <span class="stepno">{i + 1}</span>
-              <img src={b.img} alt={b.title} loading="lazy" width="1200" height="675" />
+              <img src={b.img} alt={b.titleEn} loading="lazy" width="1200" height="675" />
             </div>
             <div class="body">
-              <h3>{b.title}</h3>
-              <p class="narr">{b.narration}</p>
-              <p class="callout tech"><b>⚙️ How it works: </b>{b.tech}</p>
-              <p class="callout value"><b>💡 Why it matters: </b>{b.value}</p>
+              <h3><span class="en">{b.titleEn}</span><span class="zh">{b.titleZh}</span></h3>
+              <p class="narr"><span class="en">{b.narrationEn}</span><span class="zh">{b.narrationZh}</span></p>
+              <p class="callout tech"><b><span class="en">⚙️ How it works: </span><span class="zh">⚙️ 技术原理：</span></b><span class="en">{b.techEn}</span><span class="zh">{b.techZh}</span></p>
+              <p class="callout value"><b><span class="en">💡 Why it matters: </span><span class="zh">💡 业务价值：</span></b><span class="en">{b.valueEn}</span><span class="zh">{b.valueZh}</span></p>
             </div>
           </article>
         ))}
       </div>
 
-      <h2 style="text-align:center;margin:2.6rem 0 1rem;">Already built — before Beta</h2>
+      <h2 style="text-align:center;margin:2.6rem 0 1rem;"><span class="en">Already built — before Beta</span><span class="zh">Beta 之前，已经建成</span></h2>
       <ul class="built-list">
-        {built.map((b) => <li>{b}</li>)}
+        {built.map((b) => <li><span class="en">{b.en}</span><span class="zh">{b.zh}</span></li>)}
       </ul>
 
-      <h2 style="text-align:center;margin:2.4rem 0 1rem;">Four ways to support</h2>
+      <h2 style="text-align:center;margin:2.4rem 0 1rem;"><span class="en">Four ways to support</span><span class="zh">四种支持方式</span></h2>
       <div class="support-grid">
         {support.map((s) => (
           <div class="support-card">
             <div class="support-top"><b>{s.n}</b><span class="support-min">{s.min}</span></div>
-            <p>{s.desc}</p>
+            <p><span class="en">{s.en}</span><span class="zh">{s.zh}</span></p>
           </div>
         ))}
       </div>
 
       <div class="cta">
-        <a class="cta-btn" href="https://launch.mushroom.cv" target="_blank" rel="noopener">See the full Cold Launch →</a>
-        <p class="cta-note">Independent site · live dashboard, milestones, FAQ and the GToken purchase page.</p>
+        <a class="cta-btn" href="https://launch.mushroom.cv" target="_blank" rel="noopener"><span class="en">See the full Cold Launch →</span><span class="zh">查看完整冷启动 →</span></a>
+        <p class="cta-note"><span class="en">Independent site · live dashboard, milestones, FAQ and the GToken purchase page.</span><span class="zh">独立站点 · 实时看板、里程碑、FAQ 与 GToken 购买页。</span></p>
       </div>
     </main>
 
     <footer class="site-foot">
       <div class="wrap">
-        <p>Cos72 Cold Launch · summary of launch.mushroom.cv · comics by Mycelium's 🍄 Xiao M</p>
+        <p><span class="en">Cos72 Cold Launch · summary of launch.mushroom.cv · comics by Mycelium's 🍄 Xiao M</span><span class="zh">Cos72 冷启动 · launch.mushroom.cv 摘要 · 漫画由 Mycelium 🍄 小M 绘制</span></p>
       </div>
     </footer>
+
+    <script is:inline>
+      const langBtn = document.getElementById("langBtn");
+      langBtn.addEventListener("click", () => {
+        const zh = document.body.classList.toggle("lang-zh");
+        langBtn.textContent = zh ? "EN" : "中文";
+        document.documentElement.lang = zh ? "zh-CN" : "en";
+      });
+    </script>
 
     <style>
       .built-list { max-width: 720px; margin: 0 auto; padding: 0; list-style: none; display: grid; gap: .5rem; }
