@@ -33,6 +33,14 @@ const blocks = [
   },
 ];
 
+const built = [
+  "AirAccount — fingerprint login, no ETH, KMS/TEE key management",
+  "SuperPaymaster — gasless transactions & micro-payments",
+  "AirAccount Core Contract — 446/446 tests passing",
+  "YetAnotherAA — Passkey + account flow + AAStar integration",
+  "Cos72 + Sin90 — community OS + personal OS (Beta)",
+];
+
 const support = [
   { n: "Grant", min: "$500+", desc: "Unconditional sponsorship — back the vision, funds go to the public pool." },
   { n: "Co-build", min: "$1,000+", desc: "Fund a module you care about; we define deliverables together." },
@@ -86,6 +94,11 @@ const support = [
         ))}
       </div>
 
+      <h2 style="text-align:center;margin:2.6rem 0 1rem;">Already built — before Beta</h2>
+      <ul class="built-list">
+        {built.map((b) => <li>{b}</li>)}
+      </ul>
+
       <h2 style="text-align:center;margin:2.4rem 0 1rem;">Four ways to support</h2>
       <div class="support-grid">
         {support.map((s) => (
@@ -109,6 +122,9 @@ const support = [
     </footer>
 
     <style>
+      .built-list { max-width: 720px; margin: 0 auto; padding: 0; list-style: none; display: grid; gap: .5rem; }
+      .built-list li { border: 1px solid var(--line); border-radius: 10px; padding: .6rem .9rem; font-size: .92rem; position: relative; padding-left: 2rem; }
+      .built-list li::before { content: "✓"; color: var(--orange); font-weight: 800; position: absolute; left: .8rem; }
       .support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto; }
       .support-card { border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; }
       .support-top { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; }
