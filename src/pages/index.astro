@@ -19,19 +19,23 @@ const desc =
   <body>
     <header class="site-head">
       <div class="wrap">
-        <div class="brand">Cos72 <small>Role Tour</small></div>
-        <a class="lang-btn pill-cta" href="/launch">Cold Launch →</a>
+        <div class="brand">Cos72 <small><span class="en">Role Tour</span><span class="zh">角色漫游</span></small></div>
+        <div style="display:flex;gap:.5rem;align-items:center;">
+          <a class="lang-btn pill-cta" href="/launch"><span class="en">Cold Launch →</span><span class="zh">冷启动 →</span></a>
+          <button class="lang-btn" id="langBtn" type="button">中文</button>
+        </div>
       </div>
     </header>
 
     <section class="hero">
       <div class="wrap">
-        <h1>Pick a role, let the little guide walk you through</h1>
+        <h1>
+          <span class="en">Pick a role, let the little guide walk you through</span>
+          <span class="zh">选个角色，让卡通向导带你走一遍</span>
+        </h1>
         <p>
-          Cos72 is an account-abstraction wallet & community OS built on
-          <b>WebAuthn (Face ID)</b>, <b>BLS aggregate signatures</b>, and
-          <b>ERC-4337</b>. Below, in comics: what each role can do, the tech
-          behind it, and why it matters to you.
+          <span class="en">Cos72 is an account-abstraction wallet & community OS built on <b>WebAuthn (Face ID)</b>, <b>BLS aggregate signatures</b>, and <b>ERC-4337</b>. Below, in comics: what each role can do, the tech behind it, and why it matters to you.</span>
+          <span class="zh">Cos72 是一套基于 <b>WebAuthn（刷脸）</b>、<b>BLS 聚合签名</b>、<b>ERC-4337</b> 的账户抽象钱包与社区操作系统。下面用漫画讲清楚：每个角色能做什么、背后是什么技术、对你有什么价值。</span>
         </p>
       </div>
     </section>
@@ -39,15 +43,10 @@ const desc =
     <nav class="wrap">
       <div class="tabs" role="tablist">
         {roles.map((r, i) => (
-          <button
-            class="tab"
-            role="tab"
-            data-role={r.key}
-            aria-selected={i === 0 ? "true" : "false"}
-          >
+          <button class="tab" role="tab" data-role={r.key} aria-selected={i === 0 ? "true" : "false"}>
             <span>{IP_META[r.ip].emoji}</span>
-            <span>{r.nameEn}</span>
-            {r.comingSoon && <span class="soon">· soon</span>}
+            <span class="en">{r.nameEn}</span>
+            <span class="zh">{r.nameZh}</span>
           </button>
         ))}
       </div>
@@ -58,49 +57,45 @@ const desc =
         <section class={`role ${i === 0 ? "active" : ""}`} data-role={r.key}>
           <p class="role-tag">
             <strong>{IP_META[r.ip].emoji} {IP_META[r.ip].name}</strong>
-            {` guides «${r.nameEn}»: ${r.taglineEn}`}
+            <span class="en"> guides «{r.nameEn}»: {r.taglineEn}</span>
+            <span class="zh"> 带你看「{r.nameZh}」：{r.taglineZh}</span>
           </p>
 
-          {r.comingSoon ? (
-            <div class="coming">
-              <div class="big">🚧</div>
-              <p>This role's tour is being drawn — coming soon.</p>
-            </div>
-          ) : (
-            <div class="steps">
-              {r.steps.map((s, idx) => (
-                <article class="step">
-                  <div class="panel">
-                    <span class="stepno">{idx + 1}</span>
-                    <img src={s.img} alt={s.titleEn} loading="lazy" width="1200" height="675" />
-                  </div>
-                  <div class="body">
-                    <h3>{s.titleEn}</h3>
-                    <p class="narr">{s.narrationEn}</p>
-                    <p class="callout tech"><b>⚙️ How it works: </b>{s.techEn}</p>
-                    <p class="callout value"><b>💡 Why it matters: </b>{s.valueEn}</p>
-                    {s.evidence && (
-                      <a class="evidence" href={s.evidence.url} target="_blank" rel="noopener">
-                        🔗 {s.evidence.label}
-                      </a>
-                    )}
-                    {s.cases && s.cases.length > 0 && (
-                      <div class="cases">
-                        {s.cases.map((c) => <span class="case">{c}</span>)}
-                      </div>
-                    )}
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
+          <div class="steps">
+            {r.steps.map((s, idx) => (
+              <article class="step">
+                <div class="panel">
+                  <span class="stepno">{idx + 1}</span>
+                  <img src={s.img} alt={s.titleEn} loading="lazy" width="1200" height="675" />
+                </div>
+                <div class="body">
+                  <h3><span class="en">{s.titleEn}</span><span class="zh">{s.titleZh}</span></h3>
+                  <p class="narr"><span class="en">{s.narrationEn}</span><span class="zh">{s.narrationZh}</span></p>
+                  <p class="callout tech">
+                    <b><span class="en">⚙️ How it works: </span><span class="zh">⚙️ 技术原理：</span></b>
+                    <span class="en">{s.techEn}</span><span class="zh">{s.techZh}</span>
+                  </p>
+                  <p class="callout value">
+                    <b><span class="en">💡 Why it matters: </span><span class="zh">💡 业务价值：</span></b>
+                    <span class="en">{s.valueEn}</span><span class="zh">{s.valueZh}</span>
+                  </p>
+                  {s.evidence && (
+                    <a class="evidence" href={s.evidence.url} target="_blank" rel="noopener">🔗 {s.evidence.label}</a>
+                  )}
+                  {s.cases && s.cases.length > 0 && (
+                    <div class="cases">{s.cases.map((c) => <span class="case">{c}</span>)}</div>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
       ))}
     </main>
 
     <footer class="site-foot">
       <div class="wrap">
-        <p>Cos72 Role Tour · narrated by Mycelium's cartoon IPs · comics are illustrative; on-chain evidence is on Sepolia testnet</p>
+        <p><span class="en">Cos72 Role Tour · narrated by Mycelium's cartoon IPs · comics are illustrative; on-chain evidence is on Sepolia testnet</span><span class="zh">Cos72 角色漫游 · 由 Mycelium 卡通 IP 讲解 · 漫画为示意，链上凭证在 Sepolia 测试网</span></p>
       </div>
     </footer>
 
@@ -114,6 +109,12 @@ const desc =
           sections.forEach((s) => s.classList.toggle("active", s.getAttribute("data-role") === key));
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
+      });
+      const langBtn = document.getElementById("langBtn");
+      langBtn.addEventListener("click", () => {
+        const zh = document.body.classList.toggle("lang-zh");
+        langBtn.textContent = zh ? "EN" : "中文";
+        document.documentElement.lang = zh ? "zh-CN" : "en";
       });
     </script>
   </body>
