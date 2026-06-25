@@ -1,0 +1,120 @@
+---
+import "../styles/global.css";
+import { roles } from "../data/roles";
+import { IP_META } from "../data/roles/_schema";
+
+const title = "Cos72 Role Tour";
+const desc =
+  "A comic walkthrough of Cos72 (a WebAuthn + BLS + ERC-4337 AA wallet & community OS): pick a role and see what you can do, how it works, and why it matters.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap">
+        <div class="brand">Cos72 <small>Role Tour</small></div>
+        <a class="lang-btn pill-cta" href="/launch">Cold Launch →</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <h1>Pick a role, let the little guide walk you through</h1>
+        <p>
+          Cos72 is an account-abstraction wallet & community OS built on
+          <b>WebAuthn (Face ID)</b>, <b>BLS aggregate signatures</b>, and
+          <b>ERC-4337</b>. Below, in comics: what each role can do, the tech
+          behind it, and why it matters to you.
+        </p>
+      </div>
+    </section>
+
+    <nav class="wrap">
+      <div class="tabs" role="tablist">
+        {roles.map((r, i) => (
+          <button
+            class="tab"
+            role="tab"
+            data-role={r.key}
+            aria-selected={i === 0 ? "true" : "false"}
+          >
+            <span>{IP_META[r.ip].emoji}</span>
+            <span>{r.nameEn}</span>
+            {r.comingSoon && <span class="soon">· soon</span>}
+          </button>
+        ))}
+      </div>
+    </nav>
+
+    <main class="wrap">
+      {roles.map((r, i) => (
+        <section class={`role ${i === 0 ? "active" : ""}`} data-role={r.key}>
+          <p class="role-tag">
+            <strong>{IP_META[r.ip].emoji} {IP_META[r.ip].name}</strong>
+            {` guides «${r.nameEn}»: ${r.taglineEn}`}
+          </p>
+
+          {r.comingSoon ? (
+            <div class="coming">
+              <div class="big">🚧</div>
+              <p>This role's tour is being drawn — coming soon.</p>
+            </div>
+          ) : (
+            <div class="steps">
+              {r.steps.map((s, idx) => (
+                <article class="step">
+                  <div class="panel">
+                    <span class="stepno">{idx + 1}</span>
+                    <img src={s.img} alt={s.titleEn} loading="lazy" width="1200" height="675" />
+                  </div>
+                  <div class="body">
+                    <h3>{s.titleEn}</h3>
+                    <p class="narr">{s.narrationEn}</p>
+                    <p class="callout tech"><b>⚙️ How it works: </b>{s.techEn}</p>
+                    <p class="callout value"><b>💡 Why it matters: </b>{s.valueEn}</p>
+                    {s.evidence && (
+                      <a class="evidence" href={s.evidence.url} target="_blank" rel="noopener">
+                        🔗 {s.evidence.label}
+                      </a>
+                    )}
+                    {s.cases && s.cases.length > 0 && (
+                      <div class="cases">
+                        {s.cases.map((c) => <span class="case">{c}</span>)}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <p>Cos72 Role Tour · narrated by Mycelium's cartoon IPs · comics are illustrative; on-chain evidence is on Sepolia testnet</p>
+      </div>
+    </footer>
+
+    <script is:inline>
+      const tabs = document.querySelectorAll(".tab");
+      const sections = document.querySelectorAll(".role");
+      tabs.forEach((t) => {
+        t.addEventListener("click", () => {
+          const key = t.getAttribute("data-role");
+          tabs.forEach((x) => x.setAttribute("aria-selected", x === t ? "true" : "false"));
+          sections.forEach((s) => s.classList.toggle("active", s.getAttribute("data-role") === key));
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    </script>
+  </body>
+</html>

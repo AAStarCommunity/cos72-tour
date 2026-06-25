@@ -1,0 +1,124 @@
+---
+import "../styles/global.css";
+
+const title = "Cold Launch — AAStar / Mycelium";
+const desc =
+  "What we're building and why we need you: digital public goods (Cos72, Sin90, AAStar Infra), buy GToken/aPNTs with zero gas, and a transparent 4-stage Cold Launch. Details at launch.mushroom.cv.";
+
+// 数据来自 launch.mushroom.cv（Cold Launch 页）：GToken $0.15/USDC、四阶段独立筹集、合计 $135,800、四种支持方式。
+const blocks = [
+  {
+    img: "/panels/launch-build.png",
+    title: "What we build: digital public goods",
+    narration:
+      "Cos72 (community OS), Sin90 (personal OS) and AAStar Infra (AirAccount · SuperPaymaster · CometENS) — open, free and permissionless. Anyone can use, fork or self-deploy.",
+    tech: "All code is open-source on GitHub; the hosted version is free for communities, with running costs covered by grants.",
+    value: "Public infrastructure for individuals → communities → cities, owned by no platform.",
+  },
+  {
+    img: "/panels/launch-buy.png",
+    title: "Buy GToken / aPNTs points with zero gas",
+    narration:
+      "Support the Cold Launch by buying GToken with USDC — $0.15 / GToken. This is the EOA purchase convenience provided by Launch: pay USDC from an EOA, a relayer covers the gas, so you need no ETH.",
+    tech: "USDC via EIP-3009 authorization; a DVT relay + Paymaster sponsors the gas. aPNTs community points buy the same gasless way.",
+    value: "GToken = governance + voting + real community membership. Your ideas leave a trace in governance.",
+  },
+  {
+    img: "/panels/launch-phases.png",
+    title: "A transparent, staged Cold Launch",
+    narration:
+      "Four stages, funded independently — each is its own goal and none overrides another. Phase 1 $1,200 (keep building), Phase 2 $8,000 (research), Phase 3 $36,600 (community + DAO), Phase 4 $86,400 (core infra, 18 months). Total $135,800.",
+    tech: "Funds enter a public pool; every use is shown live on the dashboard and milestones. Treasury via Gnosis Safe multisig.",
+    value: "Not a pitch deck — a transparent checklist of what we've done, what's next, and where the money goes.",
+  },
+];
+
+const support = [
+  { n: "Grant", min: "$500+", desc: "Unconditional sponsorship — back the vision, funds go to the public pool." },
+  { n: "Co-build", min: "$1,000+", desc: "Fund a module you care about; we define deliverables together." },
+  { n: "Consulting", min: "$500+", desc: "Open-source is free to self-host; paid help with deploy & customization (via the commercial entity)." },
+  { n: "Governance Token", min: "$0.15 / GToken", desc: "Buy GToken with USDC for governance rights and community membership." },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap">
+        <div class="brand">Cos72 <small>Cold Launch</small></div>
+        <a class="lang-btn" href="/">← Role Tour</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <h1>What we're building, and why we need you</h1>
+        <p>
+          AAStar / Mycelium builds open digital public goods. This is the Cold Launch — a transparent
+          look at what exists, what's next, and how you can support it. For the full story, visit
+          <a href="https://launch.mushroom.cv" target="_blank" rel="noopener">launch.mushroom.cv</a>.
+        </p>
+      </div>
+    </section>
+
+    <main class="wrap">
+      <div class="steps">
+        {blocks.map((b, i) => (
+          <article class="step">
+            <div class="panel">
+              <span class="stepno">{i + 1}</span>
+              <img src={b.img} alt={b.title} loading="lazy" width="1200" height="675" />
+            </div>
+            <div class="body">
+              <h3>{b.title}</h3>
+              <p class="narr">{b.narration}</p>
+              <p class="callout tech"><b>⚙️ How it works: </b>{b.tech}</p>
+              <p class="callout value"><b>💡 Why it matters: </b>{b.value}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <h2 style="text-align:center;margin:2.4rem 0 1rem;">Four ways to support</h2>
+      <div class="support-grid">
+        {support.map((s) => (
+          <div class="support-card">
+            <div class="support-top"><b>{s.n}</b><span class="support-min">{s.min}</span></div>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="cta">
+        <a class="cta-btn" href="https://launch.mushroom.cv" target="_blank" rel="noopener">See the full Cold Launch →</a>
+        <p class="cta-note">Independent site · live dashboard, milestones, FAQ and the GToken purchase page.</p>
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <p>Cos72 Cold Launch · summary of launch.mushroom.cv · comics by Mycelium's 🍄 Xiao M</p>
+      </div>
+    </footer>
+
+    <style>
+      .support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto; }
+      .support-card { border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; }
+      .support-top { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; }
+      .support-min { color: var(--orange); font-weight: 700; font-size: .9rem; }
+      .support-card p { color: var(--muted); margin: .4rem 0 0; font-size: .92rem; }
+      .cta { text-align: center; margin: 2.6rem auto 1rem; }
+      .cta-btn { display: inline-block; background: var(--ink); color: #fff; text-decoration: none; padding: .8rem 1.4rem; border-radius: 999px; font-weight: 700; }
+      .cta-btn:hover { background: var(--accent); }
+      .cta-note { color: var(--muted); font-size: .85rem; margin-top: .6rem; }
+      @media (max-width: 620px) { .support-grid { grid-template-columns: 1fr; } }
+    </style>
+  </body>
+</html>
