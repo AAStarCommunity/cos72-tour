@@ -1,0 +1,134 @@
+---
+import "../styles/global.css";
+
+const title = "Features — Cos72, explained by David (CTO)";
+const desc = "The core features of Cos72: security (passkey, BLS, layered tiers, social recovery), ease of use (no password/seed/gas), and an experience that hides the chain.";
+
+const features = [
+  {
+    icon: "🔐",
+    titleEn: "Security, layered",
+    titleZh: "分层的安全",
+    en: "Passkey/biometric login, BLS-verified transactions, amount-based tiers (small = passkey, larger = + DVT co-sign, large = + guardian), a daily spending Guard, and 2-of-3 social recovery. Keys live in KMS/TEE.",
+    zh: "Passkey/生物识别登录、BLS 校验交易、按金额分层（小额=passkey，更大=+DVT 协签，大额=+guardian）、每日消费 Guard、2-of-3 社交恢复。密钥存于 KMS/TEE。",
+  },
+  {
+    icon: "🪶",
+    titleEn: "Ease of use",
+    titleZh: "易用",
+    en: "No password, no seed phrase, no gas top-up. Sign up with email + Face ID; act with a fingerprint. If you can unlock your phone, you can use it.",
+    zh: "无密码、无助记词、不用充 gas。邮箱 + Face ID 注册，指纹确认操作。会解锁手机，就会用。",
+  },
+  {
+    icon: "🫥",
+    titleEn: "The chain disappears (user-imperceptible)",
+    titleZh: "用户无感（链被隐藏）",
+    en: "Your address exists from day one (counterfactual) and deploys on first use; gas is sponsored; network details stay hidden. It feels like a normal Web2 app.",
+    zh: "地址第一天就以反事实方式存在、首次使用时部署；gas 被代付；网络细节被隐藏。用起来就像普通 Web2 应用。",
+  },
+  {
+    icon: "🗝️",
+    titleEn: "Self-sovereign & open",
+    titleZh: "自主可控 & 开源",
+    en: "Open-source and provider-portable. Use the free hosted version, or clone and self-deploy. No vendor lock-in; your data, identity and assets stay yours.",
+    zh: "开源、provider 可替换。用免费托管版，或克隆自部署。无厂商锁定；数据、身份、资产都归你。",
+  },
+  {
+    icon: "🌿",
+    titleEn: "Community-native",
+    titleZh: "社区原生",
+    en: "Community points (xPNTs), non-transferable reputation SBTs, ticketed membership, and gas sponsorship for members — the pieces a community needs, built in.",
+    zh: "社区积分（xPNTs）、不可转让声誉 SBT、门票制成员、为成员代付 gas —— 社区需要的零件,开箱即用。",
+  },
+];
+
+const nav = [
+  { href: "/", en: "Role Tour", zh: "角色漫游" },
+  { href: "/architecture", en: "Architecture", zh: "架构" },
+  { href: "/feature", en: "Features", zh: "特性", active: true },
+  { href: "/launch", en: "Cold Launch", zh: "冷启动" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap">
+        <div class="brand">Mycelium</div>
+        <nav class="topnav">
+          {nav.map((n) => (
+            <a class={`navlink ${n.active ? "navlink-active" : ""}`} href={n.href}>
+              <span class="en">{n.en}</span><span class="zh">{n.zh}</span>
+            </a>
+          ))}
+          <button class="lang-btn" id="langBtn" type="button">中文</button>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="feat-hero">
+          <img src="/panels/arch-intro.png" alt="David, CTO" width="420" height="236" />
+          <div>
+            <h1><span class="en">Core features</span><span class="zh">核心特性</span></h1>
+            <p>
+              <span class="en"><b>David (CTO):</b> here's what makes Cos72 different — secure by design, effortless to use, and the chain stays out of your way.</span>
+              <span class="zh"><b>David（CTO）：</b>Cos72 的不同之处 —— 设计即安全、用起来毫不费力、链不挡你的路。</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="wrap">
+      <div class="feat-grid">
+        {features.map((f) => (
+          <div class="feat-card">
+            <div class="feat-ico">{f.icon}</div>
+            <h3><span class="en">{f.titleEn}</span><span class="zh">{f.titleZh}</span></h3>
+            <p><span class="en">{f.en}</span><span class="zh">{f.zh}</span></p>
+          </div>
+        ))}
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <p><span class="en">Cos72 Features · explained by David (CTO) · Mycelium</span><span class="zh">Cos72 特性 · 由 David（CTO）讲解 · Mycelium</span></p>
+      </div>
+    </footer>
+
+    <script is:inline>
+      const langBtn = document.getElementById("langBtn");
+      langBtn.addEventListener("click", () => {
+        const zh = document.body.classList.toggle("lang-zh");
+        langBtn.textContent = zh ? "EN" : "中文";
+        document.documentElement.lang = zh ? "zh-CN" : "en";
+      });
+    </script>
+
+    <style>
+      .topnav { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+      .navlink { text-decoration: none; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: .35rem .7rem; font-size: .85rem; }
+      .navlink:hover { border-color: var(--ink); }
+      .navlink-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+      .feat-hero { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; justify-content: center; text-align: left; }
+      .feat-hero img { border: 1px solid var(--line); border-radius: 12px; background: var(--soft); max-width: 360px; }
+      .feat-hero h1 { text-align: left; }
+      .feat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; max-width: 960px; margin: 1rem auto 3rem; }
+      .feat-card { border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.2rem; }
+      .feat-ico { font-size: 1.6rem; }
+      .feat-card h3 { margin: .3rem 0 .4rem; }
+      .feat-card p { color: #374151; font-size: .95rem; margin: 0; }
+      @media (max-width: 700px) { .feat-grid { grid-template-columns: 1fr; } }
+    </style>
+  </body>
+</html>

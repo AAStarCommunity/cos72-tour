@@ -1,0 +1,160 @@
+---
+import "../styles/global.css";
+
+const title = "Architecture — Cos72, a tour by David (CTO)";
+const desc = "How Cos72 is built: AAStar Infra (AirAccount · SuperPaymaster · CometENS), Apps (Cos72 · Sin90), and the Mycelium Protocol layer — explained by David, the CTO.";
+
+const blocks = [
+  {
+    img: "/panels/arch-intro.png",
+    titleEn: "Hi, I'm David — your CTO guide",
+    titleZh: "你好，我是 David —— 你的 CTO 向导",
+    narrationEn: "Let me walk you through how Cos72 is built: the modules, how they fit together, and the ideas behind them.",
+    narrationZh: "我带你看看 Cos72 是怎么搭起来的：有哪些模块、它们怎么咬合、背后是什么思路。",
+    techEn: "Everything is open-source and provider-portable; nothing locks you to one cloud.",
+    techZh: "全部开源、provider 可替换；不把你锁死在某一朵云上。",
+    valueEn: "Four panels and you'll get the whole system.",
+    valueZh: "四格漫画,带你看懂整个系统。",
+  },
+  {
+    img: "/panels/arch-stack.png",
+    titleEn: "One stack, three layers",
+    titleZh: "一个栈,三层",
+    narrationEn: "Bottom — AAStar Infra: AirAccount (your account & keys), SuperPaymaster (gas sponsorship), CometENS (free naming). Middle — Apps: Cos72 (community OS) and Sin90 (personal OS). Top — Mycelium Protocol: Park (digital public goods) and Spores (sustainable collaboration).",
+    narrationZh: "底层 —— AAStar 基础设施：AirAccount（账户与密钥）、SuperPaymaster（gas 代付）、CometENS（免费命名）。中层 —— 应用：Cos72（社区 OS）、Sin90（个人 OS）。顶层 —— Mycelium 协议：Park（数字公共物品）、Spores（可持续协作）。",
+    techEn: "Each layer depends only on the one below through stable contracts, so any piece can be swapped.",
+    techZh: "每层只通过稳定契约依赖下一层,任何一块都能替换。",
+    valueEn: "Clear separation of concerns — easy to reason about, easy to extend.",
+    valueZh: "关注点清晰分离 —— 好理解、好扩展。",
+  },
+  {
+    img: "/panels/arch-flow.png",
+    titleEn: "How a request flows",
+    titleZh: "一个请求怎么流转",
+    narrationEn: "A user signs in with AirAccount (passkey, no ETH). When they act, SuperPaymaster sponsors the gas, and the transaction lands in the Cos72 app — no seed phrase, no gas top-up.",
+    narrationZh: "用户用 AirAccount 登录（passkey、无需 ETH）。操作时，SuperPaymaster 代付 gas，交易落到 Cos72 应用 —— 没有助记词、不用先充 gas。",
+    techEn: "WebAuthn/P-256 signing → ERC-4337 UserOp → Paymaster sponsorship → on-chain.",
+    techZh: "WebAuthn/P-256 签名 → ERC-4337 UserOp → Paymaster 代付 → 上链。",
+    valueEn: "The chain disappears — it feels like a normal app.",
+    valueZh: "链被隐藏起来 —— 用起来就像普通 App。",
+  },
+  {
+    img: "/panels/arch-relations.png",
+    titleEn: "Modules work together",
+    titleZh: "模块协同工作",
+    narrationEn: "For a single gasless action, three infra modules cooperate: AirAccount says who you are, CometENS gives you a human name, and SuperPaymaster pays the gas — woven into one transaction.",
+    narrationZh: "完成一次零 gas 操作，三个基础设施模块协同：AirAccount 证明你是谁，CometENS 给你一个人类可读的名字，SuperPaymaster 付 gas —— 编织进同一笔交易。",
+    techEn: "Composable primitives, not a monolith; each is independently useful and independently swappable.",
+    techZh: "可组合的原语,而非铁板一块;每个都能单独使用、单独替换。",
+    valueEn: "Build new apps by composing the same pieces.",
+    valueZh: "用同一批积木,组合出新的应用。",
+  },
+];
+
+const modules = [
+  { n: "AirAccount", en: "Passkey/biometric account; KMS/TEE keys; no ETH needed; social recovery.", zh: "Passkey/生物识别账户；KMS/TEE 密钥；无需 ETH；社交恢复。" },
+  { n: "SuperPaymaster", en: "Gasless transactions; sponsor gas with community points.", zh: "Gasless 交易；用社区积分代付 gas。" },
+  { n: "CometENS", en: "Free ENS subdomains — human-readable names/identity.", zh: "免费 ENS 子域名 —— 人类可读的名字/身份。" },
+  { n: "Cos72", en: "Community OS — tasks, points/shop, governance.", zh: "社区 OS —— 任务、积分/商店、治理。" },
+  { n: "Sin90", en: "Personal OS — AI agents + digital sovereignty.", zh: "个人 OS —— AI 代理 + 数字主权。" },
+  { n: "Mycelium Protocol", en: "Park (public goods) · Spores (sustainable collaboration).", zh: "Park（公共物品）· Spores（可持续协作）。" },
+];
+
+const nav = [
+  { href: "/", en: "Role Tour", zh: "角色漫游" },
+  { href: "/architecture", en: "Architecture", zh: "架构", active: true },
+  { href: "/feature", en: "Features", zh: "特性" },
+  { href: "/launch", en: "Cold Launch", zh: "冷启动" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap">
+        <div class="brand">Mycelium</div>
+        <nav class="topnav">
+          {nav.map((n) => (
+            <a class={`navlink ${n.active ? "navlink-active" : ""}`} href={n.href}>
+              <span class="en">{n.en}</span><span class="zh">{n.zh}</span>
+            </a>
+          ))}
+          <button class="lang-btn" id="langBtn" type="button">中文</button>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <h1><span class="en">System architecture</span><span class="zh">系统架构</span></h1>
+        <p>
+          <span class="en">A quick tour by <b>David (CTO)</b> — what the modules are, how they fit, and why it's built this way.</span>
+          <span class="zh">由 <b>David（CTO）</b>带你快速过一遍 —— 有哪些模块、怎么咬合、为什么这么设计。</span>
+        </p>
+      </div>
+    </section>
+
+    <main class="wrap">
+      <div class="steps">
+        {blocks.map((b, i) => (
+          <article class="step">
+            <div class="panel">
+              <span class="stepno">{i + 1}</span>
+              <img src={b.img} alt={b.titleEn} loading="lazy" width="1200" height="675" />
+            </div>
+            <div class="body">
+              <h3><span class="en">{b.titleEn}</span><span class="zh">{b.titleZh}</span></h3>
+              <p class="narr"><span class="en">{b.narrationEn}</span><span class="zh">{b.narrationZh}</span></p>
+              <p class="callout tech"><b><span class="en">⚙️ How it works: </span><span class="zh">⚙️ 技术原理：</span></b><span class="en">{b.techEn}</span><span class="zh">{b.techZh}</span></p>
+              <p class="callout value"><b><span class="en">💡 Why it matters: </span><span class="zh">💡 业务价值：</span></b><span class="en">{b.valueEn}</span><span class="zh">{b.valueZh}</span></p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <h2 style="text-align:center;margin:2.6rem 0 1rem;"><span class="en">Module reference</span><span class="zh">模块速查</span></h2>
+      <div class="support-grid">
+        {modules.map((m) => (
+          <div class="support-card">
+            <div class="support-top"><b>{m.n}</b></div>
+            <p><span class="en">{m.en}</span><span class="zh">{m.zh}</span></p>
+          </div>
+        ))}
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <p><span class="en">Cos72 Architecture · narrated by David (CTO) · Mycelium</span><span class="zh">Cos72 架构 · 由 David（CTO）讲解 · Mycelium</span></p>
+      </div>
+    </footer>
+
+    <script is:inline>
+      const langBtn = document.getElementById("langBtn");
+      langBtn.addEventListener("click", () => {
+        const zh = document.body.classList.toggle("lang-zh");
+        langBtn.textContent = zh ? "EN" : "中文";
+        document.documentElement.lang = zh ? "zh-CN" : "en";
+      });
+    </script>
+
+    <style>
+      .topnav { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+      .navlink { text-decoration: none; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: .35rem .7rem; font-size: .85rem; }
+      .navlink:hover { border-color: var(--ink); }
+      .navlink-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+      .support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto; }
+      .support-card { border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; }
+      .support-top b { font-size: 1rem; }
+      .support-card p { color: var(--muted); margin: .4rem 0 0; font-size: .92rem; }
+      @media (max-width: 620px) { .support-grid { grid-template-columns: 1fr; } }
+    </style>
+  </body>
+</html>
