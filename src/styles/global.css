@@ -112,6 +112,16 @@ body.lang-zh .zh { display: inline; }
 .cases { margin-top: .6rem; display: flex; flex-wrap: wrap; gap: .3rem; }
 .case { font-size: .68rem; color: var(--muted); border: 1px dashed var(--line); border-radius: 6px; padding: .1rem .4rem; }
 
+/* ---------- founder ---------- */
+.founder { border-top: 1px solid var(--line); background: var(--soft); padding: 2rem 0; }
+.founder-card { display: flex; gap: 1.6rem; align-items: center; max-width: 860px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.founder-card img { width: 180px; height: 180px; border-radius: 16px; border: 1px solid var(--line); background: #fff; object-fit: cover; }
+.founder-body { min-width: 0; flex: 1; min-width: 280px; }
+.founder-label { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.founder-name { font-size: 1.4rem; font-weight: 800; margin: .1rem 0 .5rem; }
+.founder-text { margin: 0 0 .6rem; }
+.founder-classical { font-family: "Songti SC", "STSong", "SimSun", serif; font-style: italic; color: #5b4636; border-left: 3px solid var(--orange); padding-left: .8rem; margin: 0; line-height: 2; }
+
 /* ---------- footer ---------- */
 .site-foot { border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; padding: 1.4rem 0 2.4rem; text-align: center; }
 
