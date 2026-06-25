@@ -19,11 +19,14 @@ const desc =
   <body>
     <header class="site-head">
       <div class="wrap">
-        <div class="brand">Cos72 <small><span class="en">Role Tour</span><span class="zh">角色漫游</span></small></div>
-        <div style="display:flex;gap:.5rem;align-items:center;">
-          <a class="lang-btn pill-cta" href="/launch"><span class="en">Cold Launch →</span><span class="zh">冷启动 →</span></a>
+        <div class="brand">Mycelium</div>
+        <nav class="topnav">
+          <a class="navlink navlink-active" href="/"><span class="en">Role Tour</span><span class="zh">角色漫游</span></a>
+          <a class="navlink" href="/architecture"><span class="en">Architecture</span><span class="zh">架构</span></a>
+          <a class="navlink" href="/feature"><span class="en">Features</span><span class="zh">特性</span></a>
+          <a class="navlink cta" href="/launch"><span class="en">Cold Launch</span><span class="zh">冷启动</span></a>
           <button class="lang-btn" id="langBtn" type="button">中文</button>
-        </div>
+        </nav>
       </div>
     </header>
 
@@ -92,6 +95,23 @@ const desc =
         </section>
       ))}
     </main>
+
+    <section class="founder">
+      <div class="wrap">
+        <div class="founder-card">
+          <img src="/panels/founder-jason.png" alt="小J · Jason Jiao" width="320" height="320" loading="lazy" />
+          <div class="founder-body">
+            <div class="founder-label"><span class="en">Founder</span><span class="zh">创始人</span></div>
+            <div class="founder-name">小J · Jason Jiao</div>
+            <p class="founder-text">
+              <span class="en">An idealist founding the <b>Mycelium</b> collaboration network — using digital public goods to lift the digital wellbeing of ordinary people.</span>
+              <span class="zh">理想主义者，致力于创立 <b>Mycelium</b> 协作网络，用数字公共物品提升普通人的数字福祉。</span>
+            </p>
+            <p class="founder-classical" lang="zh-Hant">理想之士也。志在立菌丝协作之网（Mycelium），以数字公器，济庶民数字之福。</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="site-foot">
       <div class="wrap">

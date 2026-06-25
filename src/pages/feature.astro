@@ -1,0 +1,146 @@
+---
+import "../styles/global.css";
+
+const title = "Features — Cos72, explained by David (CTO)";
+const desc = "Eight core features of Cos72: layered security, passwordless & seedless, gasless, user-imperceptible, social recovery, open & self-sovereign, community-native, composable & portable.";
+
+const features = [
+  {
+    img: "/panels/feature-01.png",
+    titleEn: "Layered security",
+    titleZh: "分层安全",
+    en: "Passkey/biometric login + BLS-verified transactions, with amount-based tiers — small needs only your passkey, larger adds a DVT co-signature, large adds a guardian. A daily Guard caps spending. Keys live in KMS/TEE.",
+    zh: "Passkey/生物识别登录 + BLS 校验交易，按金额分层 —— 小额只需 passkey，更大加 DVT 协签，大额再加 guardian。每日 Guard 限额封顶。密钥存于 KMS/TEE。",
+  },
+  {
+    img: "/panels/feature-02.png",
+    titleEn: "Passwordless & seedless",
+    titleZh: "无密码、无助记词",
+    en: "Sign up with email + Face ID; no password to invent, no seed phrase to back up. WebAuthn/P-256 credentials replace the things people lose.",
+    zh: "邮箱 + Face ID 注册；不用编密码、不用抄助记词。WebAuthn/P-256 凭证取代了那些容易丢的东西。",
+  },
+  {
+    img: "/panels/feature-03.png",
+    titleEn: "Gasless — no ETH needed",
+    titleZh: "零 Gas —— 不需要 ETH",
+    en: "SuperPaymaster sponsors gas (USDC via EIP-3009 + a relay). You can transact with zero ETH in your wallet — the #1 newbie blocker, gone.",
+    zh: "SuperPaymaster 代付 gas（USDC 走 EIP-3009 + relay）。钱包里 0 ETH 也能交易 —— 新手最大的拦路虎被搬走。",
+  },
+  {
+    img: "/panels/feature-04.png",
+    titleEn: "The chain disappears",
+    titleZh: "链被隐藏（用户无感）",
+    en: "Your address is counterfactual (deploys on first use) and network details stay hidden. It feels like a normal Web2 app — the blockchain stays out of your way.",
+    zh: "地址是反事实的（首次使用才部署），网络细节被隐藏。用起来就像普通 Web2 应用 —— 区块链不挡你的路。",
+  },
+  {
+    img: "/panels/feature-05.png",
+    titleEn: "Social recovery",
+    titleZh: "社交恢复",
+    en: "2-of-3 guardians (including a default community guardian) can restore your account if you lose a device. The community guardian is only 1 of 3 — it can help, never harm.",
+    zh: "2-of-3 守护人（含默认社区守护人）在你丢设备时帮你找回账户。社区守护人只占 3 之 1 —— 只能帮你、不能害你。",
+  },
+  {
+    img: "/panels/feature-06.png",
+    titleEn: "Open & self-sovereign",
+    titleZh: "开源 & 自主可控",
+    en: "Fully open-source and provider-portable. Use the hosted version or self-deploy; no vendor lock-in. Your data, identity and assets stay yours.",
+    zh: "完全开源、provider 可替换。用托管版或自部署;无厂商锁定。数据、身份、资产都归你。",
+  },
+  {
+    img: "/panels/feature-07.png",
+    titleEn: "Community-native",
+    titleZh: "社区原生",
+    en: "Community points (xPNTs), non-transferable reputation SBTs, ticketed membership, and gas sponsorship for members — the pieces a community needs, built in.",
+    zh: "社区积分（xPNTs）、不可转让声誉 SBT、门票制成员、为成员代付 gas —— 社区需要的零件,开箱即用。",
+  },
+  {
+    img: "/panels/feature-08.png",
+    titleEn: "Composable & provider-portable",
+    titleZh: "可组合 & 不锁定 provider",
+    en: "Modular primitives behind stable contracts: swap runtime/sandbox providers (E2B, veFaaS, local), and addresses come from one SDK canonical source across chains.",
+    zh: "稳定契约后的可组合原语：runtime/sandbox provider 可替换（E2B、veFaaS、本地），地址跨链统一取自 SDK 单一事实源。",
+  },
+];
+
+const nav = [
+  { href: "/", en: "Role Tour", zh: "角色漫游" },
+  { href: "/architecture", en: "Architecture", zh: "架构" },
+  { href: "/feature", en: "Features", zh: "特性", active: true },
+  { href: "/launch", en: "Cold Launch", zh: "冷启动" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap">
+        <div class="brand">Mycelium</div>
+        <nav class="topnav">
+          {nav.map((n) => (
+            <a class={`navlink ${n.active ? "navlink-active" : ""}`} href={n.href}>
+              <span class="en">{n.en}</span><span class="zh">{n.zh}</span>
+            </a>
+          ))}
+          <button class="lang-btn" id="langBtn" type="button">中文</button>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <h1><span class="en">Eight core features</span><span class="zh">八个核心特性</span></h1>
+        <p>
+          <span class="en"><b>David (CTO)</b> walks you through what makes Cos72 different — secure, effortless, and out of your way.</span>
+          <span class="zh"><b>David（CTO）</b>带你看 Cos72 的不同之处 —— 安全、省心、不挡路。</span>
+        </p>
+      </div>
+    </section>
+
+    <main class="wrap">
+      <div class="steps">
+        {features.map((f, i) => (
+          <article class="step">
+            <div class="panel">
+              <span class="stepno">{i + 1}</span>
+              <img src={f.img} alt={f.titleEn} loading="lazy" width="1200" height="675" />
+            </div>
+            <div class="body">
+              <h3><span class="en">{f.titleEn}</span><span class="zh">{f.titleZh}</span></h3>
+              <p class="narr"><span class="en">{f.en}</span><span class="zh">{f.zh}</span></p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <p><span class="en">Cos72 Features · explained by David (CTO) · Mycelium</span><span class="zh">Cos72 特性 · 由 David（CTO）讲解 · Mycelium</span></p>
+      </div>
+    </footer>
+
+    <script is:inline>
+      const langBtn = document.getElementById("langBtn");
+      langBtn.addEventListener("click", () => {
+        const zh = document.body.classList.toggle("lang-zh");
+        langBtn.textContent = zh ? "EN" : "中文";
+        document.documentElement.lang = zh ? "zh-CN" : "en";
+      });
+    </script>
+
+    <style>
+      .topnav { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+      .navlink { text-decoration: none; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: .35rem .7rem; font-size: .85rem; }
+      .navlink:hover { border-color: var(--ink); }
+      .navlink-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    </style>
+  </body>
+</html>
